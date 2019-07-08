@@ -8,30 +8,37 @@ namespace OperationsWithStrings
     {
         static void Main(string[] args)
         {
-            // Get the second greatest element out of an array 
+            // 1. Get the second greatest element out of an array 
+            var secondMax = GetSecondMax();
+            Console.WriteLine(secondMax);
+            Console.WriteLine("--------------------------------------------");
+
+            // 2. Fill a collection with random numbers from n to m without repetitions
+            var n = 6;
+            var m = 15;
+            FillWithRandomNumbers(n, m);
+            Console.WriteLine("----------------------------------------------");
+
+            // 3. Implement a method that accepts a sorted collection and an element which entries are to be found
+            Console.WriteLine("реализовать метод, который принимает в качестве параметров – " +
+                "коллекцию отсортированных целочисленных значений и элемент, который необходимо найти," +
+                " метод должен вернуть количество вхождений данного элемента ");
+
+            int[] arr2 = { 1, 2, 3, 4, 5, 5, 5, 5, 5, 6, 7, 8, 9 };
+
+            Console.WriteLine(GetNumberOfEntries(arr2, 5));
+            Console.WriteLine("----------------------------------------------");
+
+            // 4. Infinite string search
+            Console.WriteLine(InfiniteStringSearch.GetNumberOfEntries("abcaadefg", 15, 'a'));
+            Console.ReadKey();
+        }
+
+        private static int GetSecondMax()
+        {
             int[] arr = { 12, 35, 1, 10, 34, 1 };
 
             var max = -1;
-
-            //Array.Sort(arr);
-            //Array.Reverse(arr);
-            //max = arr[1];
-
-            //for (int i = 0; i < arr.Length - 1; i++)
-            //{
-            //    if (max < arr[i])
-            //    {
-            //        max = arr[i];
-            //    }               
-            //}
-            //var max2 = -1;
-            //for (int i = 0; i < arr.Length - 1; i++)
-            //{
-            //    if (max2 < arr[i] && arr[i] < max)
-            //    {
-            //        max2 = arr[i];
-            //    }
-            //}
 
             var secondMax = -1;
             max = secondMax = arr[0];
@@ -48,40 +55,10 @@ namespace OperationsWithStrings
                     secondMax = arr[i];
                 }
             }
-            Console.WriteLine(secondMax);
-            Console.WriteLine("--------------------------------------------");
 
-            // Fill a collection with random numbers from n to m without repetitions
-            var n = 6;
-            var m = 15;
-            var size = m - n;
-
-            var list = new HashSet<int>();
-            while (list.Count < size)
-            {
-                list.Add(GetRandomNumber(n, m));
-            }
-
-            foreach (var item in list)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("----------------------------------------------");
-            // Implement a method that accepts a sorted collection and an element which entries are to be found
-            Console.WriteLine("реализовать метод, который принимает в качестве параметров – " +
-                "коллекцию отсортированных целочисленных значений и элемент, который необходимо найти," +
-                " метод должен вернуть количество вхождений данного элемента ");
-
-            int[] arr2 = { 1, 2, 3, 4, 5, 5, 5, 5, 5, 6, 7, 8, 9 };
-
-            Console.WriteLine(GetNumberOfEntries(arr2, 5));
-            Console.WriteLine("----------------------------------------------");
-
-            // Infinite string search
-            Console.WriteLine(InfiniteStringSearch.GetNumberOfEntries("abcaadefg", 15, 'a'));
-            Console.ReadKey();
+            return secondMax;
         }
-        
+
         public static int GetNumberOfEntries(int[] collection, int element)
         {
             var count = 0;
@@ -106,6 +83,22 @@ namespace OperationsWithStrings
             }
 
             return count;
+        }
+
+        private static void FillWithRandomNumbers(int n, int m)
+        {
+            var size = m - n;
+
+            var list = new HashSet<int>();
+            while (list.Count < size)
+            {
+                list.Add(GetRandomNumber(n, m));
+            }
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         public static int GetRandomNumber(int n, int m)

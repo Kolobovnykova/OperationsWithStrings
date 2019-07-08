@@ -42,7 +42,7 @@ namespace OperationsWithStrings
                 throw new ArgumentException("Desired size of the substring should be a number between 1 and 10^12");
             }
 
-            // for vizualization
+            // for visualization
             var fullString = GetFullString(pattern, size);
             Console.WriteLine($"Full string: {fullString}");
 
