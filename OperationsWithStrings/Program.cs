@@ -8,6 +8,13 @@ namespace OperationsWithStrings
     {
         static void Main(string[] args)
         {
+           // int[] arr0 = { 1, 2, 3, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+            int[] arr0 = { 1, 2, 3, 5, 5, 5, 5, 8, 9, 10, 11, 12, 13 };
+            var leftBoundary = FindWithBinarySearch(arr0, 4);
+            var rightBoundary = FindWithBinarySearch(arr0, 6);
+
+            var size = rightBoundary - leftBoundary;
+
             // 1. Get the second greatest element out of an array 
             var secondMax = GetSecondMax();
             Console.WriteLine(secondMax);
@@ -24,7 +31,7 @@ namespace OperationsWithStrings
                 "коллекцию отсортированных целочисленных значений и элемент, который необходимо найти," +
                 " метод должен вернуть количество вхождений данного элемента ");
 
-            int[] arr2 = { 1, 2, 3, 4, 5, 5, 5, 5, 5, 6, 7, 8, 9 };
+            int[] arr2 = { 1, 2, 4, 4, 5, 5, 5, 5, 5, 6, 7, 8, 9 };
 
             Console.WriteLine(GetNumberOfEntries(arr2, 5));
             Console.WriteLine("----------------------------------------------");
@@ -32,6 +39,30 @@ namespace OperationsWithStrings
             // 4. Infinite string search
             Console.WriteLine(InfiniteStringSearch.GetNumberOfEntries("abcaadefg", 15, 'a'));
             Console.ReadKey();
+        }
+
+        private static int FindWithBinarySearch(int[] arr, int search)
+        {
+            int left = 0;
+            int right = arr.Length - 1;
+            while (left < right)
+            {
+                var mid = left + (right - left) / 2;
+                if (search == arr[mid])
+                {
+                    return mid;
+                }
+                if (search < arr[mid])
+                {
+                    right = mid - 1;
+                }
+                else
+                {
+                    left = mid + 1;
+                }
+            }
+            
+            return left;
         }
 
         private static int GetSecondMax()

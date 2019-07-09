@@ -49,16 +49,29 @@ namespace OperationsWithStrings
 
             long count = 0;
 
-            var countOfEntriesInPattern = pattern.Count(c => c == character);
+            //var countOfEntriesInPattern = pattern.Count(c => c == character);
 
-            long countOfPatternsInSize = size / pattern.Length;
-            long remainingStringLength = size % pattern.Length;
+            //long countOfPatternsInSize = size / pattern.Length;
+            //long remainingStringLength = size % pattern.Length;
 
-            count = countOfPatternsInSize * countOfEntriesInPattern;
-            
-            var remainingString = pattern.Substring(0, (int)remainingStringLength);
-            var restOfEntries = remainingString.Count(c => c == character);
-            count += restOfEntries;
+            //count = countOfPatternsInSize * countOfEntriesInPattern;
+
+            //var remainingString = pattern.Substring(0, (int)remainingStringLength);
+            //// pattern.Take(remainingStringLength)
+            //var restOfEntries = remainingString.Count(c => c == character);
+            //count += restOfEntries;
+
+            for (int i = 0; i < pattern.Length; i++)
+            {
+                if (pattern[i] == 'a')
+                {
+                    count += size / pattern.Length;
+                    if (i < size % pattern.Length)
+                    {
+                        count++;
+                    }
+                }
+            }
 
             return count;
         }
