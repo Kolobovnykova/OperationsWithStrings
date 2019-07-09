@@ -89,10 +89,12 @@ namespace OperationsWithStrings
         {
             var size = m - n;
 
+            Random rnd = new Random();
             var list = new HashSet<int>();
+
             while (list.Count < size)
             {
-                list.Add(GetRandomNumber(n, m));
+                list.Add(rnd.Next(n, m));
             }
 
             foreach (var item in list)
@@ -100,11 +102,5 @@ namespace OperationsWithStrings
                 Console.WriteLine(item);
             }
         }
-
-        public static int GetRandomNumber(int n, int m)
-        {
-            Random rnd = new Random();
-            return rnd.Next(n, m);
-        }   
     }
 }
