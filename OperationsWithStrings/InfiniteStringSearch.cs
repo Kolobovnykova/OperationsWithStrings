@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 
 namespace OperationsWithStrings
@@ -48,31 +49,16 @@ namespace OperationsWithStrings
 
             long count = 0;
 
-            var countOfEntriesInPattern = 0;
+            var countOfEntriesInPattern = pattern.Count(c => c == character);
 
-            foreach (var item in pattern)
-            {
-                if (item == character)
-                {
-                    countOfEntriesInPattern++;
-                }
-            }
-            
             long countOfPatternsInSize = size / pattern.Length;
             long remainingStringLength = size % pattern.Length;
 
             count = countOfPatternsInSize * countOfEntriesInPattern;
-
-            StringBuilder sb = new StringBuilder(pattern);
-            sb.Remove((int)remainingStringLength, pattern.Length - (int)remainingStringLength);
-
-            for (int i = 0; i < sb.Length; i++)
-            {
-                if (sb[i] == character)
-                {
-                    count++;
-                }
-            }
+            
+            var remainingString = pattern.Substring(0, (int)remainingStringLength);
+            var restOfEntries = remainingString.Count(c => c == character);
+            count += restOfEntries;
 
             return count;
         }
