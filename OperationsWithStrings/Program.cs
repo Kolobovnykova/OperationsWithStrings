@@ -8,13 +8,6 @@ namespace OperationsWithStrings
     {
         static void Main(string[] args)
         {
-           // int[] arr0 = { 1, 2, 3, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
-            int[] arr0 = { 1, 2, 3, 5, 5, 5, 5, 8, 9, 10, 11, 12, 13 };
-            var leftBoundary = FindWithBinarySearch(arr0, 4);
-            var rightBoundary = FindWithBinarySearch(arr0, 6);
-
-            var size = rightBoundary - leftBoundary;
-
             // 1. Get the second greatest element out of an array 
             var secondMax = GetSecondMax();
             Console.WriteLine(secondMax);
@@ -39,30 +32,6 @@ namespace OperationsWithStrings
             // 4. Infinite string search
             Console.WriteLine(InfiniteStringSearch.GetNumberOfEntries("abcaadefg", 15, 'a'));
             Console.ReadKey();
-        }
-
-        private static int FindWithBinarySearch(int[] arr, int search)
-        {
-            int left = 0;
-            int right = arr.Length - 1;
-            while (left < right)
-            {
-                var mid = left + (right - left) / 2;
-                if (search == arr[mid])
-                {
-                    return mid;
-                }
-                if (search < arr[mid])
-                {
-                    right = mid - 1;
-                }
-                else
-                {
-                    left = mid + 1;
-                }
-            }
-            
-            return left;
         }
 
         private static int GetSecondMax()
@@ -92,28 +61,64 @@ namespace OperationsWithStrings
 
         public static int GetNumberOfEntries(int[] collection, int element)
         {
-            var count = 0;
+            //int[] arr0 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+            //int[] arr0 = { 1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 8, 9, 10, 11, 12, 13 };
+            //int[] arr0 = { 5, 5, 5, 5, 5, 5, 5, 5 };
 
-            for (int i = 0; i < collection.Length - 1; i++)
+            var leftBoundary = FindLeftWithBinarySearch(collection, element);
+            var rightBoundary = FindRightWithBinarySearch(collection, element);
+
+            return rightBoundary - leftBoundary + 1;
+        }
+
+        private static int FindLeftWithBinarySearch(int[] arr, int search)
+        {
+            int left = 0;
+            int right = arr.Length - 1;
+            while (left <= right)
             {
-                if (collection[i] == element)
+                var mid = left + (right - left) / 2;
+                if ((mid == 0 || arr[mid - 1] < search)
+                    && search == arr[mid])
                 {
-                    count++;
-                    for (int j = i + 1; j < collection.Length - 1; j++)
-                    {
-                        if (collection[j] == element)
-                        {
-                            count++;
-                        }
-                        else
-                        {
-                            return count;
-                        }
-                    }
+                    return mid;
+                }
+                if (search <= arr[mid])
+                {
+                    right = mid - 1;
+                }
+                else
+                {
+                    left = mid + 1;
                 }
             }
 
-            return count;
+            return -1;
+        }
+
+        private static int FindRightWithBinarySearch(int[] arr, int search)
+        {
+            int left = 0;
+            int right = arr.Length - 1;
+            while (left <= right)
+            {
+                var mid = left + (right - left) / 2;
+                if ((mid == arr.Length - 1 || arr[mid + 1] > search)
+                    && search == arr[mid])
+                {
+                    return mid;
+                }
+                if (search < arr[mid])
+                {
+                    right = mid - 1;
+                }
+                else
+                {
+                    left = mid + 1;
+                }
+            }
+
+            return -1;
         }
 
         private static void FillWithRandomNumbers(int n, int m)
