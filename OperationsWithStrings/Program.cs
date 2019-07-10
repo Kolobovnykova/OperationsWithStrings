@@ -65,10 +65,45 @@ namespace OperationsWithStrings
             //int[] arr0 = { 1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 8, 9, 10, 11, 12, 13 };
             //int[] arr0 = { 5, 5, 5, 5, 5, 5, 5, 5 };
 
-            var leftBoundary = FindLeftWithBinarySearch(collection, element);
-            var rightBoundary = FindRightWithBinarySearch(collection, element);
+            //var leftBoundary = FindLeftWithBinarySearch(collection, element);
+            //var rightBoundary = FindRightWithBinarySearch(collection, element);
+
+            var leftBoundary = FindWithBinarySearch(collection, element, isSearchingForRight: false);
+            var rightBoundary = FindWithBinarySearch(collection, element, isSearchingForRight: true);
 
             return rightBoundary - leftBoundary + 1;
+        }
+
+        private static int FindWithBinarySearch(int[] arr, int search, bool isSearchingForRight)
+        {
+            bool isSearchingForLeft = !isSearchingForRight;
+            int left = 0;
+            int right = arr.Length - 1;
+            while (left <= right)
+            {
+                var mid = left + (right - left) / 2;
+
+                if (search == arr[mid])
+                {
+                    if (isSearchingForLeft && (mid == 0 || arr[mid - 1] < search)
+                        || isSearchingForRight && (mid == arr.Length - 1 || arr[mid + 1] > search))
+                    {
+                        return mid;
+                    }
+                }
+
+                if (isSearchingForLeft && search <= arr[mid]
+                    || isSearchingForRight && search < arr[mid])
+                {
+                    right = mid - 1;
+                }
+                else
+                {
+                    left = mid + 1;
+                }
+            }
+
+            return -1;
         }
 
         private static int FindLeftWithBinarySearch(int[] arr, int search)
