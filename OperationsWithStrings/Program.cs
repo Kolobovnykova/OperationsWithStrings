@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace OperationsWithStrings
@@ -31,6 +30,12 @@ namespace OperationsWithStrings
 
             // 4. Infinite string search
             Console.WriteLine(InfiniteStringSearch.GetNumberOfEntries("abcaadefg", 15, 'a'));
+
+            //
+            var isUnique = ArraysAndStringsTasks.AreAllCharactersUnique("string");
+            var isAPermutation = ArraysAndStringsTasks.IsAPermutation("string", "stgigr");
+            var url = ArraysAndStringsTasks.URLify("Mr John Smith    ".ToCharArray());
+            var url1 = ArraysAndStringsTasks.URLify("Mr John Smith and what is your name?              ".ToCharArray());
             Console.ReadKey();
         }
 
