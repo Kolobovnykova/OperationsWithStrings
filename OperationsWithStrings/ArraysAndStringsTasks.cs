@@ -78,5 +78,49 @@ namespace OperationsWithStrings
 
             return arr;
         }
+
+        // 4. There are three types of edits that can be performed on strings: insert a character,
+        // remove a character, or replace a character.
+        // Given two strings, write a function to check if they are one edit (or zero edits) away.
+        public static bool IsOneAway(string str1, string str2)
+        {
+            if (Math.Abs(str1.Length - str2.Length) > 1)
+            {
+                return false;
+            }
+
+            var count = 0;
+            var shorterArr = str1.Length < str2.Length ? str1 : str2;
+            var longerArr = str1.Length >= str2.Length ? str1 : str2;
+            var k = 0;
+
+            for (int i = 0; i < shorterArr.Length; i++)
+            {
+                if (shorterArr[i] != longerArr[k])
+                {
+                    count++;
+                    if (str1.Length != str2.Length)
+                    {
+                        if (shorterArr[i] == longerArr[k + 1])
+                        {
+                            k++;
+                        }
+                        else 
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                k++;
+            }
+
+            if (count > 1)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

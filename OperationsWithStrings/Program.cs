@@ -36,6 +36,11 @@ namespace OperationsWithStrings
             var isAPermutation = ArraysAndStringsTasks.IsAPermutation("string", "stgigr");
             var url = ArraysAndStringsTasks.URLify("Mr John Smith    ".ToCharArray());
             var url1 = ArraysAndStringsTasks.URLify("Mr John Smith and what is your name?              ".ToCharArray());
+            var isOneAway = ArraysAndStringsTasks.IsOneAway("vale", "vle");
+            var isOneAway1 = ArraysAndStringsTasks.IsOneAway("dfewsfsdfeswfs", "dfewsdfeswfs");
+            var isOneAway2 = ArraysAndStringsTasks.IsOneAway("pales", "pale");
+            var isOneAway3 = ArraysAndStringsTasks.IsOneAway("pale", "bale");
+            var isOneAway4 = ArraysAndStringsTasks.IsOneAway("pale", "bake");
             Console.ReadKey();
         }
 
