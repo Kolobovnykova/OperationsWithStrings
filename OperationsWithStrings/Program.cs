@@ -41,6 +41,8 @@ namespace OperationsWithStrings
             var isOneAway2 = ArraysAndStringsTasks.IsOneAway("pales", "pale");
             var isOneAway3 = ArraysAndStringsTasks.IsOneAway("pale", "bale");
             var isOneAway4 = ArraysAndStringsTasks.IsOneAway("pale", "bake");
+
+            var twoSum = ArraysAndStringsTasks.TwoSum(new int[] { 2, 7, 11, 15 }, 17);
             Console.ReadKey();
         }
 
