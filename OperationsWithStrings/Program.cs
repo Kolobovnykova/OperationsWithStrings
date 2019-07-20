@@ -44,7 +44,8 @@ namespace OperationsWithStrings
 
             var twoSum = ArraysAndStringsTasks.TwoSum(new int[] { 2, 7, 11, 15 }, 17);
             var twoSum2 = ArraysAndStringsTasks.TwoSum(new int[] { 2, 5, 5, 11 }, 10);
-            var newInt = ArraysAndStringsTasks.ReversedInteger(1534236469);
+            var newInt0 = ArraysAndStringsTasks.ReversedInteger(123);
+            var newInt1 = ArraysAndStringsTasks.ReversedInteger(1534236469);
             var newInt2 = ArraysAndStringsTasks.ReversedInteger(-2147483648);
             Console.ReadKey();
         }

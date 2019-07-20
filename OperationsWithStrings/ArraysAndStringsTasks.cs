@@ -171,20 +171,28 @@ namespace OperationsWithStrings
         public static int ReversedInteger(int x)
         {
             var newInt = 0;
-            try
+            //try
+            //{
+            //    checked
+            //    {
+            //        while (Math.Abs(x) >= 1)
+            //        {
+            //            newInt = newInt * 10 + x % 10;
+            //            x = x / 10;
+            //        }
+            //    }                
+            //}
+            //catch (OverflowException)
+            //{
+            //    newInt = 0;
+            //}
+
+            while (x != 0)
             {
-                checked
-                {
-                    while (Math.Abs(x) >= 1)
-                    {
-                        newInt = newInt * 10 + x % 10;
-                        x = x / 10;
-                    }
-                }                
-            }
-            catch (OverflowException)
-            {
-                newInt = 0;
+                if (newInt < int.MinValue / 10 || newInt > int.MaxValue / 10)
+                    return 0;
+                newInt = newInt * 10 + x % 10;
+                x /= 10;                
             }
 
             return newInt;
