@@ -134,36 +134,60 @@ namespace OperationsWithStrings
         public static int[] TwoSum(int[] nums, int target)
         {
             // O(n2)
-            // int[] result = new int[2];
-            //for (int i = 0; i < nums.Length; i++)
-            //{
-            //    for (int j = i + 1; j < nums.Length; j++)
-            //    {
-            //        if (nums[i] + nums[j] == target)
-            //        {
-            //            result[0] = i;
-            //            result[1] = j;
-            //        }
-            //    }
-            //}
-            // return result;
-            var dict = new Dictionary<int, int>();
-
             for (int i = 0; i < nums.Length; i++)
             {
-                dict.Add(i, nums[i]);
-            }
-
-            foreach (var k in dict)
-            {
-                var cont = target - k.Value;
-                if (dict.ContainsValue(cont))
+                for (int j = i + 1; j < nums.Length; j++)
                 {
-                    return new int[] { k.Key, dict.FirstOrDefault(x => x.Value == cont).Key};
+                    if (nums[i] + nums[j] == target)
+                    {
+                        return new int[] { i, j };
+                    }
                 }
             }
+            
+            //var dict = new Dictionary<int, int>();
+
+            //for (int i = 0; i < nums.Length; i++)
+            //{
+            //    var comp = target - nums[i];
+            //    var key = dict.FirstOrDefault(x => x.Value == comp).Key;
+
+            //    if (dict.ContainsValue(comp) && key != i)
+            //    {
+            //        return new int[] { i, key };
+            //    }
+
+            //    dict.Add(i, nums[i]);
+            //}
 
             throw new Exception("No pairs found");
+        }
+
+        // Given a 32-bit signed integer, reverse digits of an integer.
+        // Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1].
+        // For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
+        // Input: -123 Output: -321
+        // Input: 120 Output: 21
+        public static int ReversedInteger(int x)
+        {
+            var newInt = 0;
+            try
+            {
+                checked
+                {
+                    while (Math.Abs(x) >= 1)
+                    {
+                        newInt = newInt * 10 + x % 10;
+                        x = x / 10;
+                    }
+                }                
+            }
+            catch (OverflowException)
+            {
+                newInt = 0;
+            }
+
+            return newInt;
         }
     }
 }
