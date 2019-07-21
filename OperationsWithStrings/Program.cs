@@ -42,11 +42,13 @@ namespace OperationsWithStrings
             var isOneAway3 = ArraysAndStringsTasks.IsOneAway("pale", "bale");
             var isOneAway4 = ArraysAndStringsTasks.IsOneAway("pale", "bake");
 
-            var twoSum = ArraysAndStringsTasks.TwoSum(new int[] { 2, 7, 11, 15 }, 17);
-            var twoSum2 = ArraysAndStringsTasks.TwoSum(new int[] { 2, 5, 5, 11 }, 10);
-            var newInt0 = ArraysAndStringsTasks.ReversedInteger(123);
-            var newInt1 = ArraysAndStringsTasks.ReversedInteger(1534236469);
-            var newInt2 = ArraysAndStringsTasks.ReversedInteger(-2147483648);
+            var twoSum = Easy.TwoSum(new int[] { 2, 7, 11, 15 }, 17);
+            var twoSum2 = Easy.TwoSum(new int[] { 2, 5, 5, 11 }, 10);
+            var newInt0 = Easy.ReversedInteger(123);
+            var newInt1 = Easy.ReversedInteger(1534236469);
+            var newInt2 = Easy.ReversedInteger(-2147483648);
+            var newInt3 = Easy.IsIntegerPalindrome(1223);
+            var newInt4 = Easy.IsIntegerPalindrome(1221);
             Console.ReadKey();
         }
 
