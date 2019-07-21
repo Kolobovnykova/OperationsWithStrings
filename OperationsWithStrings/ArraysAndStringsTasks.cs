@@ -134,32 +134,57 @@ namespace OperationsWithStrings
         public static int[] TwoSum(int[] nums, int target)
         {
             // O(n2)
-            for (int i = 0; i < nums.Length; i++)
-            {
-                for (int j = i + 1; j < nums.Length; j++)
-                {
-                    if (nums[i] + nums[j] == target)
-                    {
-                        return new int[] { i, j };
-                    }
-                }
-            }
-            
-            //var dict = new Dictionary<int, int>();
-
             //for (int i = 0; i < nums.Length; i++)
             //{
-            //    var comp = target - nums[i];
-            //    var key = dict.FirstOrDefault(x => x.Value == comp).Key;
-
-            //    if (dict.ContainsValue(comp) && key != i)
+            //    for (int j = i + 1; j < nums.Length; j++)
             //    {
-            //        return new int[] { i, key };
+            //        if (nums[i] + nums[j] == target)
+            //        {
+            //            return new int[] { i, j };
+            //        }
             //    }
-
-            //    dict.Add(i, nums[i]);
             //}
 
+            // O(nLogN)
+            // if arr is sorted find (target - x) using binary search 
+
+
+            // O(n)
+            var dict = new Dictionary<int, int>();
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (dict.TryGetValue(nums[i], out int value))
+                {
+                    return new int[] { value, i };
+                }
+
+                var comp = target - nums[i];
+                dict.TryAdd(comp, i);               
+            }
+
+            // O(n)
+            // for sorted arrays
+            //var k = 0;
+            //var l = nums.Length - 1;
+
+            //while (k < l)
+            //{
+            //    var sum = nums[k] + nums[l];
+            //    if (sum == target)
+            //    {
+            //        return new int[] { k, l };
+            //    }
+            //    if (sum > target)
+            //    {
+            //        l--;
+            //    }
+            //    else
+            //    {
+            //        k++;
+            //    }
+            //}
+            
             throw new Exception("No pairs found");
         }
 
