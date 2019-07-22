@@ -49,6 +49,7 @@ namespace OperationsWithStrings
             var newInt2 = Easy.ReversedInteger(-2147483648);
             var newInt3 = Easy.IsIntegerPalindrome(1223);
             var newInt4 = Easy.IsIntegerPalindrome(1221);
+            var lcp = Easy.GetLongestCommonPrefix(new string[] { "leets", "leetcode", "leet", "leed" });
             Console.ReadKey();
         }
 
