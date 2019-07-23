@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 
 namespace OperationsWithStrings
 {
@@ -123,6 +122,48 @@ namespace OperationsWithStrings
             }
 
             return true;
+        }
+
+        // 5. Implement a method to perform basic string compression using the counts
+        // of repeated characters. For example, the string aabcccccaaa would become a2blc5a3. If the
+        // "compressed" string would not become smaller than the original string, your method should return
+        // the original string. You can assume the string has only uppercase and lowercase letters(a - z).
+        // Hints:#92, #110
+        // Do the easy thing first. Compress the string, then compare the lengths. 
+        // Be careful that you aren't repeatedly concatenating strings together. This can be very inefficient. 
+
+        public static string CompressString(string str)
+        {
+            if (str.Length == 0)
+            {
+                return "";
+            }
+
+            char c = str[0];
+            int count = 1;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 1; i < str.Length; i++)
+            {
+                if (c == str[i])
+                {
+                    count++;
+                }
+                else
+                {
+                    sb = sb.Append(c).Append(count);
+                    if (sb.Length >= str.Length)
+                    {
+                        return str;
+                    }
+
+                    count = 1;
+                    c = str[i];
+                }
+            }
+
+            sb = sb.Append(c).Append(count);
+
+            return sb.Length >= str.Length ? str : sb.ToString();
         }
     }
 }
