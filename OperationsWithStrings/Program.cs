@@ -52,6 +52,8 @@ namespace OperationsWithStrings
             var lcp = Easy.GetLongestCommonPrefix(new string[] { "leets", "leetcode", "leet", "leed" });
             var compressedString = ArraysAndStringsTasks.CompressString("aabcccccaaa");
             var compressedString1 = ArraysAndStringsTasks.CompressString("abca");
+            var p = Hard.ProductArray(new int[] { 1, 2, 3, 4, 5 });
+            var p1 = Hard.ProductArray(new int[] { 3, 2, 1 });
             Console.ReadKey();
         }
 
