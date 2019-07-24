@@ -163,9 +163,45 @@ namespace OperationsWithStrings
             //}
 
             // divide and conquer
+            // O(n * s) s - length of the strings
+            var n = strs.Length;
+            var prefix = GetLongestLongestCommonPrefix(strs, 0, n - 1);
 
+            return prefix;
+        }
+        
+        private static string GetLongestLongestCommonPrefix(string[] arr, int left, int right)
+        {
+            string prefix = "";
+            if (left == right)
+            {
+                return arr[left];
+            }
+            else
+            {
+                var mid = (left + right) / 2;
+                var leftWord = GetLongestLongestCommonPrefix(arr, left, mid);
+                var rightWord = GetLongestLongestCommonPrefix(arr, mid + 1, right);
+                prefix = CountLCP(leftWord, rightWord);
+            }
+            
+            return prefix;
+        }
 
-            return strs[0];
+        static string CountLCP(string left, string right)
+        {
+            var n = Math.Min(left.Length, right.Length);
+            var prefix = left.Substring(0, n);
+            while (prefix != right.Substring(0, prefix.Length))
+            {
+                prefix = prefix.Substring(0, prefix.Length - 1);
+                if (string.IsNullOrEmpty(prefix))
+                {
+                    return "";
+                }
+            }
+
+            return prefix;
         }
     }
 }
