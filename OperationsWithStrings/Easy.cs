@@ -135,8 +135,8 @@ namespace OperationsWithStrings
                 return "";
             }
 
+            // horizontal scanning
             //var prefix = strs[0];
-
             //for (int i = 1; i < strs.Length; i++)
             //{
             //    while (strs[i].IndexOf(prefix) != 0)
@@ -149,18 +149,21 @@ namespace OperationsWithStrings
             //    }
             //}
 
-            for (int i = 0; i < strs[0].Length; i++)
-            {
-                char c = strs[0][i];
+            // vertical scanning
+            //for (int i = 0; i < strs[0].Length; i++)
+            //{
+            //    char c = strs[0][i];
+            //    for (int j = 0; j < strs.Length; j++)
+            //    {
+            //        if (i == strs[j].Length || strs[j][i] != c)
+            //        {
+            //            return strs[0].Substring(0, i);
+            //        }
+            //    }
+            //}
 
-                for (int j = 0; j < strs.Length; j++)
-                {
-                    if (i == strs[j].Length || strs[j][i] != c)
-                    {
-                        return strs[0].Substring(0, i);
-                    }
-                }
-            }
+            // divide and conquer
+
 
             return strs[0];
         }
