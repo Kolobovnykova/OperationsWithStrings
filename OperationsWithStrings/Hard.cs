@@ -9,22 +9,49 @@
         // Follow-up: what if you can't use division?
         public static int[] ProductArray(int[] arr)
         {
-            int[] arr2 = new int[arr.Length];
-            var p = 1;
-            for (int i = 0; i < arr.Length; i++)
+            // O(n2)
+            //int[] arr2 = new int[arr.Length];
+            //var p = 1;
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    for (int j = 0; j < arr.Length; j++)
+            //    {
+            //        if (j != i)
+            //        {
+            //            p *= arr[j];
+            //        }
+            //        arr2[i] = p;
+            //    }
+            //    p = 1;
+            //}
+
+            //return arr2;
+
+            // O(n)
+            var n = arr.Length;
+            var left = new int[n];
+            var right = new int[n];
+            var prod = new int[n];
+
+            left[0] = 1;
+            right[n - 1] = 1;
+
+            for (int i = 1; i < n; i++)
             {
-                for (int j = 0; j < arr.Length; j++)
-                {
-                    if (j != i)
-                    {
-                        p *= arr[j];
-                    }
-                    arr2[i] = p;
-                }
-                p = 1;
+                left[i] = arr[i - 1] * left[i - 1];
             }
 
-            return arr2;
+            for (int i = n - 2; i >= 0; i--)
+            {
+                right[i] = arr[i + 1] * right[i + 1];
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                prod[i] = right[i] * left[i];
+            }
+
+            return prod;
         }
     }
 }
