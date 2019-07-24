@@ -29,26 +29,47 @@
 
             // O(n)
             var n = arr.Length;
-            var left = new int[n];
-            var right = new int[n];
+            //var left = new int[n];
+            //var right = new int[n];
+            //var prod = new int[n];
+
+            //left[0] = 1;
+            //right[n - 1] = 1;
+
+            //for (int i = 1; i < n; i++)
+            //{
+            //    left[i] = arr[i - 1] * left[i - 1];
+            //}
+
+            //for (int i = n - 2; i >= 0; i--)
+            //{
+            //    right[i] = arr[i + 1] * right[i + 1];
+            //}
+
+            //for (int i = 0; i < n; i++)
+            //{
+            //    prod[i] = right[i] * left[i];
+            //}
+
+            // space O(1)
             var prod = new int[n];
-
-            left[0] = 1;
-            right[n - 1] = 1;
-
-            for (int i = 1; i < n; i++)
+            var temp = 1;
+            for (int i = 0; i < n; i++)
             {
-                left[i] = arr[i - 1] * left[i - 1];
-            }
-
-            for (int i = n - 2; i >= 0; i--)
-            {
-                right[i] = arr[i + 1] * right[i + 1];
+                prod[i] = 1;
             }
 
             for (int i = 0; i < n; i++)
             {
-                prod[i] = right[i] * left[i];
+                prod[i] = temp;
+                temp *= arr[i];
+            }
+
+            temp = 1;
+            for (int i = n - 1; i >= 0; i--)
+            {
+                prod[i] *= temp;
+                temp *= arr[i];
             }
 
             return prod;
