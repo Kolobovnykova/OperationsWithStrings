@@ -54,6 +54,13 @@ namespace OperationsWithStrings
             //var compressedString1 = ArraysAndStringsTasks.CompressString("abca");
             var p = Hard.ProductArray(new int[] { 1, 2, 3, 4, 5 });
             var p1 = Hard.ProductArray(new int[] { 3, 2, 1 });
+            ArraysAndStringsTasks.RotateMatrix(new int[][]
+            {
+                new int[] {1, 2, 3, 4},
+                new int[] {5, 6, 7, 8},
+                new int[] {9, 10, 11, 12},
+                new int[] {13, 14, 15, 16}
+            });
             Console.ReadKey();
         }
 

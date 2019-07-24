@@ -80,7 +80,7 @@ namespace OperationsWithStrings
             return arr;
         }
 
-        // 4. There are three types of edits that can be performed on strings: insert a character,
+        // 5. There are three types of edits that can be performed on strings: insert a character,
         // remove a character, or replace a character.
         // Given two strings, write a function to check if they are one edit (or zero edits) away.
         public static bool IsOneAway(string str1, string str2)
@@ -124,14 +124,10 @@ namespace OperationsWithStrings
             return true;
         }
 
-        // 5. Implement a method to perform basic string compression using the counts
+        // 6. Implement a method to perform basic string compression using the counts
         // of repeated characters. For example, the string aabcccccaaa would become a2blc5a3. If the
         // "compressed" string would not become smaller than the original string, your method should return
         // the original string. You can assume the string has only uppercase and lowercase letters(a - z).
-        // Hints:#92, #110
-        // Do the easy thing first. Compress the string, then compare the lengths. 
-        // Be careful that you aren't repeatedly concatenating strings together. This can be very inefficient. 
-
         public static string CompressString(string str)
         {
             if (str.Length == 0)
@@ -164,6 +160,44 @@ namespace OperationsWithStrings
             sb = sb.Append(c).Append(count);
 
             return sb.Length >= str.Length ? str : sb.ToString();
+        }
+
+        // 7. Given an image represented by an NxN matrix, where each pixel in the image is 4
+        // bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
+
+        // Try thinking about it layer by layer. Can you rotate a specific layer? 
+        // Rotating a specific layer would just mean swapping the values in four arrays.
+        // If you were asked to swap the values in two arrays, could you do this? Can you then extend it to four arrays? 
+        public static void RotateMatrix(int[][] matrix)
+        {
+            PrintMatrix(matrix);
+
+            var n = matrix.Length;
+            for (int i = 0; i < n / 2; i++)
+            {
+                for (int j = i; j < n - 1 - i; j++)
+                {
+                    var temp = matrix[i][j];
+                    matrix[i][j] = matrix[n - 1 - j][i];
+                    matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j];
+                    matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i];
+                    matrix[j][n - 1 - i] = temp;
+                }
+            }
+
+            PrintMatrix(matrix);
+        }
+
+        private static void PrintMatrix(int[][] matrix)
+        {
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                for (int j = 0; j < matrix.Length; j++)
+                {
+                    Console.Write(matrix[i][j] + " ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
