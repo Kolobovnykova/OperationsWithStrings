@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Text;
 
 namespace OperationsWithStrings
@@ -198,6 +199,39 @@ namespace OperationsWithStrings
                 }
                 Console.WriteLine();
             }
+        }
+
+        // 8. Write an algorithm such that if an element in an MxN matrix is 0,
+        // its entire row and column are set to 0.
+        public static int[,] ZeroMatrix(int[,] matrix, int n, int m)
+        {
+            var arrIth = new ArrayList();
+            var arrJth = new ArrayList();
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (matrix[i, j] == 0)
+                    {
+                        arrIth.Add(i);
+                        arrJth.Add(j);
+                    }
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (arrIth.Contains(i) || arrJth.Contains(j))
+                    {
+                        matrix[i, j] = 0;
+                    }
+                }
+            }
+            
+            return matrix;
         }
     }
 }
