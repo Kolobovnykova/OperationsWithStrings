@@ -1,4 +1,6 @@
-﻿namespace OperationsWithStrings
+﻿using System;
+
+namespace OperationsWithStrings
 {
     public static class Hard
     {
@@ -73,6 +75,72 @@
             }
 
             return prod;
+        }
+
+        // Given an array of integers, find the first missing positive integer in linear time and constant space.
+        // In other words, find the lowest positive integer that does not exist in the array.
+        // The array can contain duplicates and negative numbers as well.
+        // For example, the input[3, 4, -1, 1] should give 2. The input[1, 2, 0] should give 3.
+        // You can modify the input array in-place.
+        public static int FirstMissingPositiveInteger(int[] arr)
+        {
+            // O(n2)
+            //var n = arr.Length;
+            //for (int j = 1; j < n + 2; j++)
+            //{
+            //    var temp = 1;
+            //    for (int i = 0; i < n; i++)
+            //    {
+            //        arr[i] -= 1;
+            //        temp *= arr[i];
+            //    }
+            //    if (temp != 0)
+            //    {
+            //        return j;
+            //    }
+            //}
+
+
+            // get min
+            var min = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (min > arr[i])
+                {
+                    min = arr[i];
+                }
+            }
+
+            if (min < 0)
+            {
+                var mod = Math.Abs(min);
+                // make arr positive
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arr[i] += mod;
+                }
+
+                var minPositive = int.MaxValue;
+
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (arr[i] < arr.Length + 1)
+                    {
+                        arr[i] *= -1;
+                    }
+                    else
+                    {
+                        if (arr[i] < minPositive)
+                        {
+                            minPositive = arr[i];
+                        }
+                    }
+                }
+
+                return Math.Abs(minPositive) - mod + 1;
+            }    
+
+            return arr.Length + 1;
         }
     }
 }

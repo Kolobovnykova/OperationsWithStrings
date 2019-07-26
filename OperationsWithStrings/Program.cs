@@ -70,6 +70,15 @@ namespace OperationsWithStrings
                     { 9, 0, 11, 12 }
                 },
                 3, 4);
+            
+            //incorrect
+            var firstMissingInteger = Hard.FirstMissingPositiveInteger(new int[] { 3, 4, -1, 1 });
+            var firstMissingInteger1 = Hard.FirstMissingPositiveInteger(new int[] { -1, -1, -1, -1 });
+            var firstMissingInteger2 = Hard.FirstMissingPositiveInteger(new int[] { 1, 2, 3 });
+            var firstMissingInteger3 = Hard.FirstMissingPositiveInteger(new int[] { 0, 0, 0, 0 });
+            var firstMissingInteger4 = Hard.FirstMissingPositiveInteger(new int[] { -5, -9, 4, 1 });
+
+
             Console.ReadKey();
         }
 
