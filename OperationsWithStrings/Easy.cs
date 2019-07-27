@@ -234,5 +234,53 @@ namespace OperationsWithStrings
 
             return stack.Count == 0;
         }
+
+        // The count-and-say sequence is the sequence of integers with the first five terms as following:
+        // 1 is read off as "one 1" or 11.
+        // 11 is read off as "two 1s" or 21.
+        // 21 is read off as "one 2, then one 1" or 1211.
+        // Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
+        public static string CountAndSay(int n)
+        {
+            if (n < 1)
+                return "";
+
+            var sb = new StringBuilder();
+            sb.Append('1');
+
+            for (int i = 1; i < n; i++)
+            {
+                sb = Count(sb);
+            }
+
+            return sb.ToString();
+        }
+
+        private static StringBuilder Count(StringBuilder str)
+        {
+            var c = str[0];
+            var sb = new StringBuilder();
+            var count = 1;
+
+            for (int i = 1; i < str.Length; i++)
+            {
+                if (str[i] == c)
+                {
+                    count++;
+                }
+                else
+                {
+                    sb.Append(count);
+                    sb.Append(c);
+                    c = str[i];
+                    count = 1;
+                }
+            }
+
+            sb.Append(count);
+            sb.Append(c);
+
+            return sb;
+        }
     }
 }

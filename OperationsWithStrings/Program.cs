@@ -81,6 +81,8 @@ namespace OperationsWithStrings
             var validParentheses = Easy.AreParenthesesValid("({[]})");
             var validParentheses1 = Easy.AreParenthesesValid("[[]");
 
+            var countAndSay = Easy.CountAndSay(4);
+
             Console.ReadKey();
         }
 
