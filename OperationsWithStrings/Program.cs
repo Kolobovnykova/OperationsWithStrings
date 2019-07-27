@@ -78,6 +78,8 @@ namespace OperationsWithStrings
             var firstMissingInteger3 = Hard.FirstMissingPositiveInteger(new int[] { 0, 0, 0, 0 });
             var firstMissingInteger4 = Hard.FirstMissingPositiveInteger(new int[] { -5, -9, 4, 1 });
 
+            var validParentheses = Easy.AreParenthesesValid("({[]})");
+            var validParentheses1 = Easy.AreParenthesesValid("[[]");
 
             Console.ReadKey();
         }

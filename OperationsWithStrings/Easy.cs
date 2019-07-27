@@ -188,7 +188,7 @@ namespace OperationsWithStrings
             return prefix;
         }
 
-        static string CountLCP(string left, string right)
+        private static string CountLCP(string left, string right)
         {
             var n = Math.Min(left.Length, right.Length);
             var prefix = left.Substring(0, n);
@@ -202,6 +202,37 @@ namespace OperationsWithStrings
             }
 
             return prefix;
+        }
+
+        public static bool AreParenthesesValid(string str)
+        {
+            var mapping = new Dictionary<char, char>();
+            mapping.Add('}', '{');
+            mapping.Add(']', '[');
+            mapping.Add(')', '(');
+            var stack = new Stack<char>();
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (mapping.ContainsKey(str[i]))
+                {
+                    char c = stack.Count > 0 ? stack.Peek() : '#';
+                    if (mapping[str[i]] == c)
+                    {
+                        stack.Pop();
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    stack.Push(str[i]);
+                }
+            }
+
+            return stack.Count == 0;
         }
     }
 }
