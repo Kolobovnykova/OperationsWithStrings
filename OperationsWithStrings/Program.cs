@@ -82,7 +82,8 @@ namespace OperationsWithStrings
             var validParentheses1 = Easy.AreParenthesesValid("[[]");
 
             var countAndSay = Easy.CountAndSay(4);
-
+            var removeElement = Easy.RemoveElement(new int[] {3, 2, 2, 3, 3, 2}, 3);
+                 
             Console.ReadKey();
         }
 
