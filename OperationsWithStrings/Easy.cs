@@ -204,6 +204,7 @@ namespace OperationsWithStrings
             return prefix;
         }
 
+        // []{}()
         public static bool AreParenthesesValid(string str)
         {
             var mapping = new Dictionary<char, char>();
@@ -314,6 +315,39 @@ namespace OperationsWithStrings
             {
                 return mid + 1;
             }
+        }
+
+        // 290. Word Pattern. Given a pattern and a string str, find if str follows the same pattern.
+        // Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.
+        // Input: pattern = "abba", str = "dog cat cat dog"
+        // Output: true
+        public static bool WordPattern(string pattern, string str)
+        {
+            var arr = str.Split(' ');
+            if (arr.Length != pattern.Length)
+                return false;
+            var dict = new Dictionary<char, string>();
+
+            for (int i = 0; i < pattern.Length; i++)
+            {
+                if (!dict.ContainsKey(pattern[i]))
+                {
+                    if (dict.ContainsValue(arr[i]))
+                    {
+                        return false;
+                    }
+                    dict.Add(pattern[i], arr[i]);
+                }
+                else
+                {
+                    if (arr[i] != dict[pattern[i]])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
 
