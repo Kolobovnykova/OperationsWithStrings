@@ -354,5 +354,25 @@ namespace OperationsWithStrings
 
             //return n;
         }
+
+        // 189. Rotate Array. Given an array, rotate the array to the right by k steps, where k is non-negative.
+        public static void RotateArray(int[] nums, int k)
+        {
+            // O(n) time, O(1) space
+            int count = 0;
+            for (int i = 0; count < nums.Length; i++)
+            {
+                var prev = nums[i];
+                var current = i;
+                do
+                {
+                    current = (current + k) % nums.Length;
+                    var temp = nums[current];
+                    nums[current] = prev;
+                    prev = temp;
+                    count++;
+                } while (i != current);
+            }
+        }
     }
 }
