@@ -83,7 +83,8 @@ namespace OperationsWithStrings
 
             var countAndSay = Easy.CountAndSay(4);
             var removeElement = Easy.RemoveElement(new int[] {3, 2, 2, 3, 3, 2}, 3);
-                 
+
+            var isSubstring = ArraysAndStringsTasks.IsSubstring("waterwall", "wallwater");
             Console.ReadKey();
         }
 

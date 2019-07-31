@@ -233,5 +233,52 @@ namespace OperationsWithStrings
             
             return matrix;
         }
+
+        // 9. String Rotation. Assume you have a method isSubstring which checks if one word is a substring
+        // of another. Given two strings, sl and s2, write code to check if s2 is a rotation of sl using only one
+        // call to isSubstring(e.g., "waterbottle" is a rotation of "erbottlewat").
+        public static bool IsSubstring(string s1, string s2)
+        {
+            if (s1.Length != s2.Length)
+            {
+                return false;
+            }
+
+            //var arrList = new ArrayList();
+
+            //for (int i = 0; i < s2.Length; i++)
+            //{
+            //    if (s2[i] == s1[0])
+            //    {
+            //        arrList.Add(i);
+            //    }
+            //}
+
+            //for (int l = 0; l < arrList.Count; l++)
+            //{
+            //    int k = (int)arrList[l];
+            //    int count = 0;
+            //    for (int i = 0; i < s1.Length; i++)
+            //    {
+            //        if (s1[i] == s2[(i + k) % s1.Length])
+            //        {
+            //            count++;
+            //        }
+            //    }
+
+            //    if (count == s1.Length)
+            //    {
+            //        return true;
+            //    }
+            //}
+
+            s2 = s2 + s2;
+            if (s2.Contains(s1))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
