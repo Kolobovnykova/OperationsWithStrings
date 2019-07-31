@@ -390,6 +390,8 @@ namespace OperationsWithStrings
         }
 
         // 189. Rotate Array. Given an array, rotate the array to the right by k steps, where k is non-negative.
+        // Input: [1,2,3,4,5,6,7] and k = 3
+        // Output: [5,6,7,1,2,3,4]
         public static void RotateArray(int[] nums, int k)
         {
             // O(n) time, O(1) space
@@ -407,6 +409,39 @@ namespace OperationsWithStrings
                     count++;
                 } while (i != current);
             }
+        }
+
+        // 66. Plus One. Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+        // The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+        // You may assume the integer does not contain any leading zero, except the number 0 itself.
+        // Input: [1,2,3]
+        // Output: [1,2,4]
+        public static int[] PlusOne(int[] arr)
+        {
+            var carry = true;
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                if (carry)
+                {
+                    if (arr[i] + 1 > 9)
+                    {
+                        arr[i] = 0;
+                        if (i - 1 < 0)
+                        {
+                            var newArr = new int[arr.Length + 1];
+                            newArr[0] = 1;
+                            return newArr;
+                        }
+                    }
+                    else
+                    {
+                        arr[i] += 1;
+                        carry = false;
+                    }
+                }
+            }
+
+            return arr;
         }
     }
 }
