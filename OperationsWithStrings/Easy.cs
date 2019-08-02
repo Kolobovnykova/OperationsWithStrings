@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace OperationsWithStrings
@@ -537,8 +538,39 @@ namespace OperationsWithStrings
                         p--;
                     }
                 }
-
             }
+        }
+
+        // 349. Intersection of Two Arrays
+        // Given two arrays, write a function to compute their intersection.
+        // Input: nums1 = [1,2,2,1], nums2 = [2,2]
+        // Output: [2]
+        // Each element in the result must be unique.
+        // The result can be in any order.
+        public static int[] Intersection(int[] arr1, int[] arr2)
+        {
+            HashSet<int> set1 = new HashSet<int>();
+            HashSet<int> set2 = new HashSet<int>();
+            foreach (var i in arr1)
+            {
+                set1.Add(i);
+            }
+
+            foreach (var i in arr2)
+            {
+                set2.Add(i);
+            }
+
+            var hashSet = new HashSet<int>();
+            foreach (var i in set1)
+            {
+                if (set2.Contains(i))
+                {
+                    hashSet.Add(i);
+                }
+            }
+
+            return hashSet.ToArray();
         }
     }
 }
