@@ -572,5 +572,37 @@ namespace OperationsWithStrings
 
             return hashSet.ToArray();
         }
+
+        // 169. Majority Element
+        // Given an array of size n, find the majority element. The majority element is the element that appears more than n/2 times.
+        // You may assume that the array is non-empty and the majority element always exist in the array.
+        // Input: [3,2,3]
+        // Output: 3
+        public static int MajorityElement(int[] nums)
+        {
+            var n = nums.Length;
+            var x = n / 2 + 1;
+            var dict = new Dictionary<int, int>();
+            var key = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                key = nums[i];
+                if (dict.ContainsKey(key))
+                {
+                    dict[key]++;
+                    if (dict[key] == x)
+                    {
+                        return key;
+                    }
+                }
+                else
+                {
+                    dict.Add(key, 1);
+                }
+            }
+
+            return key;
+        }
     }
 }
