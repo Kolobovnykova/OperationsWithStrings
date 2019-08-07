@@ -609,34 +609,19 @@ namespace OperationsWithStrings
         // Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
         public static void MoveZeroes(int[] nums)
         {
-            var p2 = 0;
-            for (int i = nums.Length - 1; i >= 0; i--)
+            var p = 0;
+            // O(n)
+            for (int i = 0; i < nums.Length; i++)
             {
                 if (nums[i] != 0)
                 {
-                    p2 = i;
-                    break;
+                    nums[p++] = nums[i];
                 }
             }
 
-            if (p2 == 0)
+            for (int i = p; i < nums.Length; i++)
             {
-                return;
-            }
-
-            for (int i = p2; i >= 0; i--)
-            {
-                if (nums[i] == 0)
-                {
-                    for (int j = i + 1; j <= p2; j++)
-                    {
-                        var temp = nums[j];
-                        nums[j] = nums[j - 1];
-                        nums[j - 1] = temp;
-                    }
-
-                    p2--;
-                }
+                nums[i] = 0;
             }
         }
     }
