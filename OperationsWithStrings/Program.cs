@@ -86,6 +86,13 @@ namespace OperationsWithStrings
 
             var isSubstring = ArraysAndStringsTasks.IsSubstring("waterwall", "wallwater");
             var repeatedSubstringPattern = Easy.RepeatedSubstringPattern("abcdr");
+
+            Easy.MergeSortedArrays(new int[] {1, 2, 3, 0, 0, 0}, 3, new int[] {2, 5, 6}, 3);
+            Easy.MajorityElement(new int[] {2, 2, 1, 1, 1, 2, 2});
+
+            var list = new LinkedListsTasks.MyLinkedList(1, 2, 3, 4, 4, 6, 7, 8, 4, 10);
+            LinkedListsTasks.RemoveDuplicates(list);
+            list.Print();
             Console.ReadKey();
         }
 
