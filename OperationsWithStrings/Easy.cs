@@ -624,5 +624,38 @@ namespace OperationsWithStrings
                 nums[i] = 0;
             }
         }
+
+        //Definition for singly-linked list.
+        public class ListNode
+        {
+            public int val;
+            public ListNode next;
+            public ListNode(int x) { val = x; }
+        }
+
+        // 83. Remove Duplicates from Sorted List
+        // Given a sorted linked list, delete all duplicates such that each element appear only once.
+        public static ListNode DeleteDuplicates(ListNode head)
+        {
+            ListNode node = head;
+            if (head == null)
+            {
+                return head;
+            }
+
+            while (node.next != null)
+            {
+                if (node.val == node.next.val)
+                {
+                    node.next = node.next.next;
+                }
+                else
+                {
+                    node = node.next;
+                }
+            }
+
+            return head;
+        }
     }
 }
