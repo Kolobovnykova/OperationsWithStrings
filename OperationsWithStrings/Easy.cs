@@ -657,5 +657,33 @@ namespace OperationsWithStrings
 
             return head;
         }
+
+        // 203. Remove all elements from a linked list of integers that have value val.
+        public static ListNode RemoveElementsLinkedList(ListNode head, int val)
+        {
+            ListNode temp = head, prev = null;
+            while (temp != null)
+            {
+                if (temp.val == val)
+                {
+                    if (temp == head)
+                    {
+                        head = head.next;
+                    }
+                    else
+                    {
+                        prev.next = temp.next;
+                    }
+                }
+                else
+                {
+                    prev = temp;
+                }
+
+                temp = temp.next;
+            }
+
+            return head;
+        }
     }
 }
