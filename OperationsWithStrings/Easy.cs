@@ -659,7 +659,7 @@ namespace OperationsWithStrings
         }
 
         // 203. Remove all elements from a linked list of integers that have value val.
-        public static ListNode RemoveElementsLinkedList(ListNode head, int val)
+        public static ListNode RemoveElementsFromLinkedList(ListNode head, int val)
         {
             ListNode temp = head, prev = null;
             while (temp != null)
@@ -684,6 +684,38 @@ namespace OperationsWithStrings
             }
 
             return head;
+        }
+
+        // 206. Reverse Linked List. Reverse a singly linked list.
+        public static ListNode ReverseList(ListNode head)
+        {
+            // time O(n), space O(n)
+            //var nodeOrder = head;
+            //ListNode nodeReverse = null;
+
+            //while (nodeOrder != null)
+            //{
+            //    var temp = new ListNode(nodeOrder.val);
+            //    temp.next = nodeReverse;
+            //    nodeReverse = temp;
+            //    nodeOrder = nodeOrder.next;
+            //}
+
+            //return nodeReverse;
+
+            // time O(n), space O(1)
+            ListNode prev = null;
+            ListNode curr = head;
+
+            while (curr != null)
+            {
+                var temp = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = temp;
+            }
+
+            return prev;
         }
     }
 }
