@@ -717,5 +717,51 @@ namespace OperationsWithStrings
 
             return prev;
         }
+
+        // 268. Missing Number
+        // Given an array containing n distinct numbers taken from [0, 1, 2, ..., n], find the one that is missing from the array.
+        public static int MissingNumber(int[] nums)
+        {
+            //Array.Sort(nums);
+
+            //if (nums[nums.Length - 1] != nums.Length)
+            //{
+            //    return nums.Length;
+            //}
+
+            //if (nums[0] != 0)
+            //{
+            //    return 0;
+            //}
+
+            //for (int i = 1; i < nums.Length; i++)
+            //{
+            //    var expected = nums[i - 1] + 1;
+            //    if (nums[i] != expected)
+            //    {
+            //        return expected;
+            //    }
+            //}
+
+            //return -1;
+
+            var hash = new HashSet<int>();
+            foreach (var h in nums)
+            {
+                hash.Add(h);
+            }
+
+            var count = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!hash.Contains(count))
+                {
+                    return count;
+                }
+                count++;
+            }
+
+            return count;
+        }
     }
 }
