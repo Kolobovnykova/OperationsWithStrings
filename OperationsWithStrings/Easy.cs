@@ -763,5 +763,46 @@ namespace OperationsWithStrings
 
             return count;
         }
+
+        public static void RotateArrayToRight(int[] arr, int k)
+        {
+            int count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine();
+                var current = i;
+                var prev = arr[current];
+                do
+                {
+                    current = (current + (arr.Length - k)) % arr.Length;
+                    var temp = arr[current];
+                    arr[current] = prev;
+                    prev = temp;
+                    count++;
+                    if (count >= arr.Length)
+                        return;
+                }
+                while (current != i);
+                arr.Print();
+                
+            }
+        }
+        //void s()
+        //{
+        //    int count = 0;
+        //    for (int i = 0; count < nums.Length; i++)
+        //    {
+        //        var prev = nums[i];
+        //        var current = i;
+        //        do
+        //        {
+        //            current = (current + k) % nums.Length;
+        //            var temp = nums[current];
+        //            nums[current] = prev;
+        //            prev = temp;
+        //            count++;
+        //        } while (i != current);
+        //    }
+        //}
     }
 }

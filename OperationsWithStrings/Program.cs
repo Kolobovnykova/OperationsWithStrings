@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OperationsWithStrings
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
@@ -93,6 +93,14 @@ namespace OperationsWithStrings
             var list = new LinkedListsTasks.MyLinkedList(1, 2, 3, 4, 4, 6, 7, 8, 4, 10);
             LinkedListsTasks.RemoveDuplicates(list);
             list.Print();
+
+            var rightArr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            Console.WriteLine();
+            rightArr.Print();
+            Easy.RotateArrayToRight(rightArr, 3);
+            Console.WriteLine();
+            rightArr.Print();
+
             Console.ReadKey();
         }
 
@@ -234,6 +242,15 @@ namespace OperationsWithStrings
             {
                 Console.WriteLine(item);
             }
+        }
+
+        public static void Print(this int[] array)
+        {
+            foreach (var item in array)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine();
         }
     }
 }
