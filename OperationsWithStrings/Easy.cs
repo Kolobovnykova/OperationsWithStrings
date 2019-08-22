@@ -787,22 +787,24 @@ namespace OperationsWithStrings
                 
             }
         }
-        //void s()
-        //{
-        //    int count = 0;
-        //    for (int i = 0; count < nums.Length; i++)
-        //    {
-        //        var prev = nums[i];
-        //        var current = i;
-        //        do
-        //        {
-        //            current = (current + k) % nums.Length;
-        //            var temp = nums[current];
-        //            nums[current] = prev;
-        //            prev = temp;
-        //            count++;
-        //        } while (i != current);
-        //    }
-        //}
+
+        // 961. N-Repeated Element in Size 2N Array
+        // In a array A of size 2N, there are N+1 unique elements, and exactly one of these elements is repeated N times.
+        // Return the element repeated N times.
+        public static int RepeatedNTimes(int[] arr)
+        {
+            var hash = new HashSet<int>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (hash.Contains(arr[i]))
+                {
+                    return arr[i];
+                }
+
+                hash.Add(arr[i]);
+            }
+
+            return -1;
+        }
     }
 }
