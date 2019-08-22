@@ -832,5 +832,24 @@ namespace OperationsWithStrings
             }
             return new int[] { i1 + 1, i2 + 1 };
         }
+
+        // 26. Remove Duplicates from Sorted Array in place
+        public static int RemoveDuplicates(int[] nums)
+        {
+            if (nums.Length == 0)
+                return 0;
+            var index = 1;
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (nums[i] != nums[i - 1])
+                {
+                    nums[index] = nums[i];
+                    index++;
+                }
+            }
+
+            return index;
+        }
+
     }
 }
