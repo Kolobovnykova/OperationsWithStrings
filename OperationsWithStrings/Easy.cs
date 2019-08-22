@@ -806,5 +806,31 @@ namespace OperationsWithStrings
 
             return -1;
         }
+
+        // 167. Two Sum II - Input array is sorted
+        // Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.
+        public static int[] TwoSumSorted(int[] arr, int target)
+        {
+            var i1 = 0;
+            var i2 = arr.Length - 1;
+
+            while (i1 != i2)
+            {
+                var result = arr[i1] + arr[i2];
+                if (result == target)
+                {
+                    return new int[] { i1 + 1, i2 + 1 };
+                }
+                else if (result > target)
+                {
+                    i2--;
+                }
+                else
+                {
+                    i1++;
+                }
+            }
+            return new int[] { i1 + 1, i2 + 1 };
+        }
     }
 }
