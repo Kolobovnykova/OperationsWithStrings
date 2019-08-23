@@ -851,5 +851,42 @@ namespace OperationsWithStrings
             return index;
         }
 
+        // 509. Fibonacci Number
+        public static int Fibonacci(int N)
+        {            
+            int[] memo = new int[N + 1];
+            return Fib(N, memo);
+        }
+        //O(n), space O(n)
+        public static int Fib(int n, int[] memo)
+        {
+            if (n <= 1)
+                return n;
+
+            if (memo[n] != 0)
+                return memo[n];
+
+            memo[n] = Fib(n - 1, memo) + Fib(n - 2, memo);
+
+            return memo[n];
+        }
+        //O(n), space O(1)
+        public static int FibConstanSpace(int n)
+        {
+            var prev1 = 0;
+            var prev2 = 1;
+            if (n <= 1)
+                return n;
+
+            var curr = 0;
+            for (int i = 2; i <= n; i++)
+            {
+                curr = prev1 + prev2;
+                prev1 = prev2;
+                prev2 = curr;
+            }
+
+            return curr;
+        }
     }
 }
