@@ -888,5 +888,25 @@ namespace OperationsWithStrings
 
             return curr;
         }
+
+        // 724. Find Pivot Index
+        public static int PivotIndex(int[] nums)
+        {
+            var total = 0;
+            var sum = 0;
+            foreach (var s in nums)
+                total += s;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (sum == total - sum - nums[i])
+                {
+                    return i;
+                }
+                sum += nums[i];
+            }
+
+            return -1;
+        }
     }
 }
