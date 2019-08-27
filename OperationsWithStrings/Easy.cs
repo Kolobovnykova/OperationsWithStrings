@@ -1006,5 +1006,26 @@ namespace OperationsWithStrings
 
             return pairs;
         }
+
+        // 58. Length of Last Word
+        public static int LengthOfLastWord(string s)
+        {
+            if (s.Length == 0)
+                return 0;
+            int r = s.Length - 1;
+            int count = 0;
+            while (r >= 0 && s[r] == ' ')
+            {
+                r--;
+            }
+
+            while (r >= 0 && s[r] != ' ')
+            {
+                r--;
+                count++;
+            }
+
+            return count;
+        }
     }
 }
