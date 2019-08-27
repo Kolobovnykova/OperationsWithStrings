@@ -965,5 +965,46 @@ namespace OperationsWithStrings
 
             return product;
         }
+
+        // 532. K-diff Pairs in an Array
+        public static int FindPairs(int[] nums, int k)
+        {
+            if (nums == null || nums.Length == 0 || k < 0) return 0;
+
+            var hash = new Dictionary<int, int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (hash.ContainsKey(nums[i]))
+                {
+                    hash[nums[i]]++;
+                }
+                else
+                {
+                    hash.Add(nums[i], 1);
+                }
+            }
+            var pairs = 0;
+
+            foreach (var key in hash.Keys)
+            {
+                var x = key + k;
+                if (k == 0)
+                {
+                    if (hash[key] >= 2)
+                    {
+                        pairs++;
+                    }
+                }
+                else
+                {
+                    if (hash.ContainsKey(x))
+                    {
+                        pairs++;
+                    }
+                }
+            }
+
+            return pairs;
+        }
     }
 }
