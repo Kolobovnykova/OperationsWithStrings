@@ -908,5 +908,49 @@ namespace OperationsWithStrings
 
             return -1;
         }
+
+        // 628. Maximum Product of Three Numbers
+        public static int MaximumProduct(int[] nums)
+        {
+            // [min1, min2, ... , max3, max2, max1]
+            var n = nums.Length - 1;
+            int max1 = int.MinValue, max2 = int.MinValue, max3 = int.MinValue;
+            int min1 = int.MaxValue, min2 = int.MaxValue;
+            // O(nLogN)
+            //Array.Sort(nums);
+            //var maxProduct = Math.Max(nums[0] * nums[1] * nums[n], nums[n-2] * nums[n-1] * nums[n]);
+
+            // O(n)
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] <= min1 && nums[i] <= min2)
+                {
+                    min2 = min1;
+                    min1 = nums[i];
+                }
+                else if (nums[i] <= min2)
+                {
+                    min2 = nums[i];
+                }
+                if (nums[i] >= max1)
+                {
+                    max3 = max2;
+                    max2 = max1;
+                    max1 = nums[i];
+                }
+                else if (nums[i] <= max1 && nums[i] >= max2)
+                {
+                    max3 = max2;
+                    max2 = nums[i];
+                }
+                else if (nums[i] <= max1 && nums[i] <= max2 && nums[i] >= max3)
+                {
+                    max3 = nums[i];
+                }
+            }
+
+            var maxProduct = Math.Max(min1 * min2 * max1, max1 * max2 * max3);
+            return maxProduct;
+        }
     }
 }
