@@ -784,7 +784,6 @@ namespace OperationsWithStrings
                 }
                 while (current != i);
                 arr.Print();
-                
             }
         }
 
@@ -871,7 +870,7 @@ namespace OperationsWithStrings
             return memo[n];
         }
         //O(n), space O(1)
-        public static int FibConstanSpace(int n)
+        public static int FibConstantSpace(int n)
         {
             var prev1 = 0;
             var prev2 = 1;
@@ -951,6 +950,20 @@ namespace OperationsWithStrings
 
             var maxProduct = Math.Max(min1 * min2 * max1, max1 * max2 * max3);
             return maxProduct;
+        }
+
+        // 561. Array Partition I
+        public static int ArrayPairSum(int[] nums)
+        {
+            Array.Sort(nums);
+            var n = nums.Length - 1;
+            var product = 0;
+            for (int i = 0; i <= n; i += 2)
+            {
+                product += nums[i];
+            }
+
+            return product;
         }
     }
 }
