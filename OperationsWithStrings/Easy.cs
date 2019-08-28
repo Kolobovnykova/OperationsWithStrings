@@ -764,7 +764,7 @@ namespace OperationsWithStrings
             return count;
         }
 
-        public static void RotateArrayToRight(int[] arr, int k)
+        public static void RotateArrayToLeft(int[] arr, int k)
         {
             int count = 0;
             for (int i = 0; i < arr.Length; i++)
@@ -784,6 +784,33 @@ namespace OperationsWithStrings
                 }
                 while (current != i);
                 arr.Print();
+            }
+        }
+
+        public static void RotateArrayToLeft2(int[] nums, int k)
+        {
+            // to the right
+            //k %= nums.Length; 
+            //RotateArray(ref nums, 0, nums.Length - 1);
+            //RotateArray(ref nums, 0, k - 1);
+            //RotateArray(ref nums, k, nums.Length - 1);
+
+            // to the left
+            k %= nums.Length;
+            RotateArray(ref nums, 0, nums.Length - 1);
+            RotateArray(ref nums, nums.Length - k, nums.Length - 1);
+            RotateArray(ref nums, 0, nums.Length - 1 - k);
+        }
+
+        public static void RotateArray(ref int[] nums, int start, int end)
+        {
+            while (start < end)
+            {
+                var temp = nums[start];
+                nums[start] = nums[end];
+                nums[end] = temp;
+                start++;
+                end--;
             }
         }
 

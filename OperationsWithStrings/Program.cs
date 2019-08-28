@@ -94,12 +94,12 @@ namespace OperationsWithStrings
             LinkedListsTasks.RemoveDuplicates(list);
             list.Print();
 
-            var rightArr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            var leftArr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
             Console.WriteLine();
-            rightArr.Print();
-            Easy.RotateArrayToRight(rightArr, 3);
+            leftArr.Print();
+            Easy.RotateArrayToLeft2(leftArr, 3);
             Console.WriteLine();
-            rightArr.Print();
+            leftArr.Print();
 
             Console.ReadKey();
         }
