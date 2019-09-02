@@ -1054,5 +1054,35 @@ namespace OperationsWithStrings
 
             return count;
         }
+
+        // 392. Is Subsequence
+        public static bool IsSubsequence(string s, string t)
+        {
+            if (t.Length == 0 && s.Length == 0)
+                return true;
+
+            Stack<char> stack = new Stack<char>();
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                stack.Push(s[i]);
+            }
+
+            char result = 'a';
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (stack.TryPeek(out result))
+                {
+                    if (t[i] == result)
+                    {
+                        stack.Pop();
+                    }
+                }
+            }
+
+            if (stack.Count == 0)
+                return true;
+
+            return false;
+        }
     }
 }
