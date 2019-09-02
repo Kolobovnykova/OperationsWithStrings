@@ -1084,5 +1084,25 @@ namespace OperationsWithStrings
 
             return false;
         }
+
+        // 344. Reverse String
+        public static void ReverseString(char[] s)
+        {
+            if (s.Length == 0)
+            {
+                return;
+            }
+            var n = s.Length - 1;
+            char temp;
+
+            for (int i = 0; i < s.Length / 2; i++)
+            {
+                if (s[i] == s[n - i])
+                    continue;
+                temp = s[i];
+                s[i] = s[n - i];
+                s[n - i] = temp;
+            }
+        }
     }
 }
