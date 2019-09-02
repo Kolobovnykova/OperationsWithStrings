@@ -1104,5 +1104,36 @@ namespace OperationsWithStrings
                 s[n - i] = temp;
             }
         }
+
+        // 345. Reverse Vowels of a String
+        public static string ReverseVowels(string s)
+        {
+            var set = "aoieuAOIEU".ToCharArray().ToHashSet<char>();
+            var left = 0;
+            var right = s.Length - 1;
+            var arr = s.ToCharArray();
+
+            while (left <= right)
+            {
+                if (!set.Contains(arr[left]))
+                {
+                    left++;
+                }
+                else if (!set.Contains(arr[right]))
+                {
+                    right--;
+                }
+                else
+                {
+                    var temp = arr[left];
+                    arr[left] = arr[right];
+                    arr[right] = temp;
+                    left++;
+                    right--;
+                }
+            }
+
+            return new string(arr);
+        }
     }
 }
