@@ -1135,5 +1135,32 @@ namespace OperationsWithStrings
 
             return new string(arr);
         }
+
+        // 387. First Unique Character in a String
+        public static int FirstUniqChar(string s)
+        {
+            var hash = new Dictionary<char, int>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (hash.ContainsKey(s[i]))
+                {
+                    hash[s[i]]++;
+                }
+                else
+                {
+                    hash.Add(s[i], 1);
+                }
+            }
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (hash[s[i]] == 1)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
     }
 }
