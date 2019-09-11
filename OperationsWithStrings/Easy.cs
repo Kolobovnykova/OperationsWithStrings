@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -1161,6 +1163,56 @@ namespace OperationsWithStrings
             }
 
             return -1;
+        }
+
+        // 557. Reverse Words in a String III
+        public static string ReverseWords(string s)
+        {
+            var sb = new StringBuilder();
+            var words = SplitSentence(s);
+            foreach (string word in words)
+            {
+                sb.Append(ReverseWord(word) + " ");
+            }
+
+            return sb.ToString().Trim();
+        }
+
+        private static string[] SplitSentence(string s)
+        {
+            var words = new ArrayList();
+            var sb = new StringBuilder();
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == ' ')
+                {
+                    words.Add(sb.ToString());
+                    sb = new StringBuilder();
+                }
+                else
+                {
+                    sb.Append(s[i]);
+                }
+            }
+            words.Add(sb.ToString());
+            return (string[])words.ToArray(typeof(string));
+        }
+
+        private static string ReverseWord(string s)
+        {
+            var start = 0;
+            int end = s.Length - 1;
+            var sb = new StringBuilder(s);
+            while (start < end)
+            {
+                var temp = sb[start];
+                sb[start] = sb[end];
+                sb[end] = temp;
+                start++;
+                end--;
+            }
+
+            return sb.ToString();
         }
     }
 }
